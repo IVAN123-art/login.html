@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Living Hope Christian High School</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4; /* Light background for contrast */
+        }
+        form {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+            background-color: white; /* White background for the form */
+        }
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="loginForm" onsubmit="return validateLogin()">
+        <h2>Login</h2>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" placeholder="Enter your email" required tabindex="1">
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required tabindex="2">
+        
+        <div class="error" id="error-message"></div>
+        
+        <input type="submit" value="Login">
+    </form>
+
+    <script>
+        function validateLogin() {
+            // Get form elements
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Predefined credentials (for demo purposes)
+            const validEmail = 'nkata'; // Replace with dynamic source if needed
+            const validPassword = '123456'; // Replace with hashed validation in production
+
+            // Clear any existing error message
+            errorMessage.textContent = '';
+            
+            // Simple validation
+            if (email === validEmail && password === validPassword) {
+                // Redirect to the dashboard page if login is successful
+                window.location.href = 'dash_board.html'; // Ensure this matches your actual file name
+                return false; // Prevents form from submitting in the traditional way
+            } else {
+                errorMessage.textContent = 'Invalid email or password. Please try again.';
+                return false; // Prevents form from being submitted
+            }
+        }
+    </script>
+
+</body>
+</html>
